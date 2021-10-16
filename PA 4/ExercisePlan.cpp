@@ -88,17 +88,14 @@ fstream& operator>> (fstream& infile, ExercisePlan& c)
 {
 	if (infile.is_open())
 	{
-		while (!infile.eof())
-		{
-			char a[100] = "";
-			infile.getline(a, 100);
-			c.setName(a);
-			infile.getline(a, 100);
-			c.setGoal(atoi(a));
-			infile.getline(a, 100);
-			c.setDate(a);
-			infile.getline(a, 100);
-		}
+		char pFile[100] = "";
+		infile.getline(pFile, 100);
+		c.setName(pFile);
+		infile.getline(pFile, 100);
+		c.setGoal(atoi(pFile));
+		infile.getline(pFile, 100);
+		c.setDate(pFile);
+		infile.getline(pFile, 100);
 	}
 	return infile;
 }

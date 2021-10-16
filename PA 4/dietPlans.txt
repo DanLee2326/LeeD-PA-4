@@ -1,27 +1,28 @@
 Sunday
-98
+2000
 10/15/21
 
-monday
-0
+Monday
+2100
 10/16/21
 
-tuesday
-0
+Tuesday
+2200
 10/17/21
 
-wednesday
-85
+Wednesday
+2300
 10/18/21
 
-thursday
-0
+Thursday
+2400
 10/19/21
 
-friday
-0
+Friday
+2500
 10/20/21
 
-saturday
-0
-10/20/21
+Saturday
+2600
+10/21/21
+

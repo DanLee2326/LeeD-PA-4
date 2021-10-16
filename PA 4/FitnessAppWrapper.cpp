@@ -2,6 +2,9 @@
 
 void FitnessAppWrapper::runApp(void)
 {
+	bool checkDiet = false;
+	bool checkExercise = false;
+
 	while (true)
 	{
 		displayMenu();
@@ -15,7 +18,9 @@ void FitnessAppWrapper::runApp(void)
 			afile.open("dietPlans.txt", std::ios::in);
 			loadWeeklyPlan(afile, weeklyDiet);
 			afile.close();
+
 			cout << "File Opened Successfully" << endl << endl;
+			checkDiet = true;
 			break;
 		}
 		case 2:
@@ -24,7 +29,9 @@ void FitnessAppWrapper::runApp(void)
 			afile.open("exercisePlans.txt", std::ios::in);
 			loadWeeklyPlan(afile, weeklyExercise);
 			afile.close();
+
 			cout << "File Opened Successfully" << endl << endl;
+			checkExercise = true;
 			break;
 		}
 		case 3:
@@ -33,6 +40,7 @@ void FitnessAppWrapper::runApp(void)
 			afile.open("dietPlans.txt", std::ios::out);
 			storeWeeklyPlan(afile, weeklyDiet);
 			afile.close();
+
 			cout << "File Saved Successfully" << endl << endl;
 			break;
 		}
@@ -42,6 +50,7 @@ void FitnessAppWrapper::runApp(void)
 			afile.open("exercisePlans.txt", std::ios::out);
 			storeWeeklyPlan(afile, weeklyExercise);
 			afile.close();
+
 			cout << "File Saved Successfully" << endl << endl;
 			break;
 		}
@@ -66,7 +75,7 @@ void FitnessAppWrapper::runApp(void)
 			cout << "6 - Friday Plan" << endl;
 			cout << "7 - Saturday Plan" << endl << endl;
 
-			cout << "Select the Diet plan you want to edit: ";
+			cout << "Select the diet plan you want to edit: ";
 			int n;
 			cin >> n;
 
@@ -77,7 +86,8 @@ void FitnessAppWrapper::runApp(void)
 			}
 			else
 			{
-				cout << "Invalid Plan Number" << endl;
+				system("cls");
+				cout << "Invalid Plan Number" << endl << endl;
 			}
 			break;
 		}
@@ -91,7 +101,7 @@ void FitnessAppWrapper::runApp(void)
 			cout << "6 - Friday Plan" << endl;
 			cout << "7 - Saturday Plan" << endl << endl;
 
-			cout << "Select the Exercise plan you want to edit: ";
+			cout << "Select the exercise plan you want to edit: ";
 			int n;
 			cin >> n;
 
@@ -102,21 +112,30 @@ void FitnessAppWrapper::runApp(void)
 			}
 			else
 			{
+				system("cls");
 				cout << "Invalid Plan Number" << endl << endl;
 			}
 			break;
 		}
 		case 9:
 		{
-			fstream afile;
-			afile.open("dietPlans.txt", std::ios::out);
-			storeWeeklyPlan(afile, weeklyDiet);
-			afile.close();
-			afile.open("exercisePlans.txt", std::ios::out);
-			storeWeeklyPlan(afile, weeklyExercise);
-			afile.close();
+			if (checkDiet)
+			{
+				fstream afile;
+				afile.open("dietPlans.txt", std::ios::out);
+				storeWeeklyPlan(afile, weeklyDiet);
+				afile.close();
+			}
+			if (checkExercise)
+			{
+				fstream afile;
+				afile.open("exercisePlans.txt", std::ios::out);
+				storeWeeklyPlan(afile, weeklyExercise);
+				afile.close();
+			}
+
 			cout << "Files Saved Successfully" << endl << endl;
-			cout << "Thank you for using Fitness App Wrapper" << endl;
+			cout << "Thank you for using Fitness App Wrapper" << endl << endl;
 			return;
 			break;
 		}
@@ -208,7 +227,7 @@ void FitnessAppWrapper::storeWeeklyPlan(fstream& storePlan, ExercisePlan weeklyP
 void FitnessAppWrapper::displayMenu()
 {
 	cout << "Fitness App Wrapper" << endl;
-	cout << "1. Load weekly diet plan from file." << endl;
+	cout << "1. Load weekly diet plan from file" << endl;
 	cout << "2. Load weekly exercise plan from file" << endl;
 	cout << "3. Store weekly diet plan to file" << endl;
 	cout << "4. Store weekly exercise plan to file" << endl;
@@ -222,7 +241,7 @@ void FitnessAppWrapper::displayMenu()
 int FitnessAppWrapper::selectMenuOption() const
 {
 	int n = 0;
-	cout << "Select An Option: ";
+	cout << "Select an option: ";
 	cin >> n;
 
 	system("cls");

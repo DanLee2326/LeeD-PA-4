@@ -88,17 +88,14 @@ fstream& operator>> (fstream& infile, DietPlan& c)
 {
 	if (infile.is_open())
 	{
-		while (!infile.eof())
-		{
-			char pFile[100] = "";
-			infile.getline(pFile, 100);
-			c.setName(pFile);
-			infile.getline(pFile, 100);
-			c.setGoal(atoi(pFile));
-			infile.getline(pFile, 100);
-			c.setDate(pFile);
-			infile.getline(pFile, 100);
-		}
+		char pFile[100] = "";
+		infile.getline(pFile, 100);
+		c.setName(pFile);
+		infile.getline(pFile, 100);
+		c.setGoal(atoi(pFile));
+		infile.getline(pFile, 100);
+		c.setDate(pFile);
+		infile.getline(pFile, 100);
 	}
 	return infile;
 }
